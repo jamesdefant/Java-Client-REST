@@ -28,29 +28,27 @@ public class Runner {
     private static DataSource src = DataSource.REST;
 
     // Change the request that you're passing to the server
-    private static Request rqst = Request.DELETE;
+    private static Request rqst = Request.INSERT;
 
 
     public static void main(String[] args) {
 
-        AgentData dataSrc = null;
+        AgentDB db = null;
 
         switch(src) {
             case DUMMY:
-                dataSrc = new data.dummy.AgentData();
+                db = new AgentDB(new data.dummy.AgentData());
                 break;
 
             case REST:
-                dataSrc = new data.REST.AgentData();
+                db = new AgentDB(new data.REST.AgentData());
                 break;
         }
 
-        if (dataSrc != null) {
+        if (db != null) {
 
             System.out.println("-----------------" + src.toString() + "-----------------");
             System.out.println("-----------------" + rqst.toString() + "-----------------");
-
-            AgentDB db = new AgentDB(dataSrc);
 
             switch(rqst) {
 
@@ -63,7 +61,7 @@ public class Runner {
                     break;
 
                 case INSERT:
-                    System.out.println(db.insertAgent(db.getAgent(2)));
+                    System.out.println(db.insertAgent(db.getAgent(1)));
                     break;
 
                 case UPDATE:
