@@ -25,8 +25,10 @@ The AgentDB class has the following methods to interact with:
 
 To use this, simply instantiate the AgentDB class with an AgentData type in its constructor:
 ```java
+// Instantiation
 AgentDB db = new AgentDB(new data.dummy.AgentData);
 
+// Usage
 Agent agent = db.getAgent(1);
 
 ArrayList<Agent> list = db.getAgentList();
