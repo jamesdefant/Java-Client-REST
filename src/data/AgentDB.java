@@ -1,0 +1,84 @@
+package data;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import model.Agent;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
+public class AgentDB {
+
+    private Gson gson;
+    private AgentData agentData;
+
+    // Constructor
+    public AgentDB(AgentData agentData) {
+
+        this.agentData = agentData;
+    }
+
+    // Retrieve Agent Json and return Agent object
+    public Agent getAgent(int agentId) {
+
+        gson = new Gson();
+        String jsonData = this.agentData.getAgent(agentId);
+        System.out.println("jsonData: " + jsonData);
+        return gson.fromJson(jsonData, Agent.class);
+    }
+
+    /**
+     * Retrieve AgentList json and return ArrayList<Agent> object
+     * @return list of all agents in database
+     */
+    public ArrayList<Agent> getAgentList() {
+
+        gson = new Gson();
+        String jsonData = this.agentData.getAllAgents();
+        System.out.println("jsonData: " + jsonData);
+
+        // Turn jsondata into list of objects
+        Type type = new TypeToken<List<Agent>>() {}.getType();
+        return gson.fromJson(jsonData, type);
+    }
+
+    /**
+     * INSERT a new Agent in the database
+     * @param agent to insert
+     * @return message of success/failure
+     */
+    public String insertAgent(Agent agent) {
+
+        // AgentId must be 0 for an INSERT to be successful
+        agent.setAgentId(0);
+
+        gson = new Gson();
+        String jsonData = gson.toJson(agent, Agent.class);
+        String response = this.agentData.insertAgent(jsonData);
+        return response;
+    }
+
+    /**
+     * UPDATE an Agent in the database
+     * @param agent to update
+     * @return message of success/failure
+     */
+    public String updateAgent(Agent agent) {
+
+        gson = new Gson();
+        String jsonData = gson.toJson(agent, Agent.class);
+        String response = this.agentData.updateAgent(jsonData);
+        return response;
+    }
+
+    /**
+     * DELETE an Agent in the database
+     * @param agentId of agent to delete
+     * @return message of success/failure
+     */
+    public String deleteAgent(int agentId) {
+
+        return this.agentData.deleteAgent(agentId);
+    }
+}
