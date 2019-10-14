@@ -19,6 +19,6 @@
 *.tar.gz
 *.rar
 
-/out/*
+out/*
 
-/src/data/DummyData.java
+src/data/DummyData.java
