@@ -4,10 +4,13 @@ import data.AgentDB;
 import data.AgentData;
 import model.Agent;
 
+// Types of data sources
 enum DataSource {
     DUMMY,
     REST
 }
+
+// Types of Requests
 enum Request {
     GET,
     GETALL,
@@ -15,11 +18,18 @@ enum Request {
     UPDATE,
     DELETE
 }
+
+/**
+ * Testing class
+ */
 public class Runner {
 
+    // Change the datasource from DummyData to REST API
     private static DataSource src = DataSource.REST;
 
+    // Change the request that you're passing to the server
     private static Request rqst = Request.DELETE;
+
 
     public static void main(String[] args) {
 
