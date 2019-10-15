@@ -19,13 +19,18 @@ public class AgentDB {
         this.agentData = agentData;
     }
 
-    // Retrieve Agent Json and return Agent object
+    /**
+     * Retrieve Agent Json and return Agent object
+     * @param agentId - id of the Agent
+     * @return Agent object
+     */
     public Agent getAgent(int agentId) {
 
         gson = new Gson();
         String jsonData = this.agentData.getAgent(agentId);
         System.out.println("jsonData: " + jsonData);
         return gson.fromJson(jsonData, Agent.class);
+
     }
 
     /**
