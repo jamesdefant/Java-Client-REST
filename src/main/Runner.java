@@ -1,14 +1,14 @@
 package main;
 
-import data.AgencyDB;
-import data.AgentDB;
-import data.CustomerDB;
+import data.*;
 import model.Agent;
 
 enum Tables {
     AGENT,
     AGENCY,
-    CUSTOMER
+    BOOKING,
+    CUSTOMER,
+    CUSTOMER_REWARDS
 }
 /**
  * Testing class
@@ -16,7 +16,7 @@ enum Tables {
 public class Runner {
 
     // Change the table to test
-    private static Tables table = Tables.CUSTOMER;
+    private static Tables table = Tables.CUSTOMER_REWARDS;
 
     // Change the datasource from DummyData to REST API
     private static DataSources src = DataSources.REST;
@@ -35,10 +35,15 @@ public class Runner {
             case AGENCY:
                 testAgencyTable();
                 break;
+            case BOOKING:
+                testBookingTable();
+                break;
             case CUSTOMER:
                 testCustomerTable();
                 break;
-        }
+            case CUSTOMER_REWARDS:
+                testCustomer_rewardsTable();
+                break;        }
     }
 
     private static void testAgentTable() {
@@ -125,6 +130,50 @@ public class Runner {
             }
         }
     }
+    private static void testBookingTable() {
+
+        BookingDB db = null;
+
+        switch(src) {
+            case DUMMY:
+                db = new BookingDB(new data.dummy.BookingData());
+                break;
+            case REST:
+                db = new BookingDB(new data.REST.BookingData());
+                break;
+        }
+
+        if (db != null) {
+
+            System.out.println("-----------------" + src.toString() + "-----------------");
+            System.out.println("-----------------" + rqst.toString() + "-----------------");
+
+            switch (rqst) {
+
+                case GET:
+                    System.out.println(db.getBooking(1));
+                    break;
+                case GETALL:
+                    System.out.println(db.getBookingList());
+                    break;
+//
+//                case INSERT:
+//                    System.out.println(db.insertAgency(db.getAgency(1)));
+//                    break;
+//
+//                case UPDATE:
+//                    Agent agent = db.getAgency(2);
+//                    agent.setAgtFirstName("James");
+//
+//                    System.out.println(db.updateAgency(agent));
+//                    break;
+//
+//                case DELETE:
+//                    System.out.println(db.deleteAgency(2));
+//                    break;
+            }
+        }
+    }
     private static void testCustomerTable() {
 
         CustomerDB db = null;
@@ -171,5 +220,48 @@ public class Runner {
             }
         }
     }
+    private static void testCustomer_rewardsTable() {
 
+        Customer_rewardsDB db = null;
+
+        switch(src) {
+            case DUMMY:
+                db = new Customer_rewardsDB(new data.dummy.Customer_rewardsData());
+                break;
+            case REST:
+                db = new Customer_rewardsDB(new data.REST.Customer_rewardsData());
+                break;
+        }
+
+        if (db != null) {
+
+            System.out.println("-----------------" + src.toString() + "-----------------");
+            System.out.println("-----------------" + rqst.toString() + "-----------------");
+
+            switch (rqst) {
+
+                case GET:
+                    System.out.println(db.getCustomer_rewards(1));
+                    break;
+                case GETALL:
+                    System.out.println(db.getCustomer_rewardsList());
+                    break;
+//
+//                case INSERT:
+//                    System.out.println(db.insertAgency(db.getAgency(1)));
+//                    break;
+//
+//                case UPDATE:
+//                    Agent agent = db.getAgency(2);
+//                    agent.setAgtFirstName("James");
+//
+//                    System.out.println(db.updateAgency(agent));
+//                    break;
+//
+//                case DELETE:
+//                    System.out.println(db.deleteAgency(2));
+//                    break;
+            }
+        }
+    }
 }
