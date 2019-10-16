@@ -1,16 +1,20 @@
 package data.REST;
 
+import rest.API;
+
 public class AgencyData implements data.AgencyData {
 
     @Override
-    public String getAgency(int agentId) {
+    public String getAgency(int agencyId) {
 
-        return "getAgency() REST API not yet implemented";
+        // Call the API
+        return API.getJson(Constants.URL + "/agency/getagency/" + agencyId);
     }
 
     @Override
     public String getAllAgencies() {
 
-        return "getAllAgencies() REST API not yet implemented";
+        // Call the API
+        return API.getJson(Constants.URL + "/agency/getallagencies/");
     }
 }

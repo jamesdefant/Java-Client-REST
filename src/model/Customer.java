@@ -1,155 +1,199 @@
 package model;
-
-import java.io.Serializable;
-
-
-
 /**
- * The persistent class for the customers database table.
- *
+ * Entity class to hold data for 1 row in travelexperts.customers table
+ * Course: CMPP-264 - Java
+ * Assignment: Workshop 6
+ * Author: Salah Hadj Cherif
+ * Date: Oct 12 2019
  */
+    public class Customer {
+        private int CustomerId;
+        private String CustFirstName;
+        private String CustLastName;
+        private String CustAddress;
+        private String CustCity;
+        private String CustProv;
+        private String CustPostal;
+        private String CustCountry;
+        private String CustHomePhone;
+        private String CustBusPhone;
+        private String CustEmail;
+        private Integer AgentId ;
+        private String Custusername;
+        private String Custpassword;
+        //properties access method
 
-public class Customer implements Serializable {
-    private static final long serialVersionUID = 1L;
+        public int getCustomerId() {
+            return CustomerId;
+        }
 
-    private int customerId;
+        public void setCustomerId(int customerId) {
+            CustomerId = customerId;
+        }
 
-    private Integer agentId;
+        public String getCustFirstName() {
+            return CustFirstName;
+        }
 
-    private String custAddress;
+        public void setCustFirstName(String custFirstName) {
+            CustFirstName = custFirstName;
+        }
 
-    private String custBusPhone;
+        public String getCustLastName() {
+            return CustLastName;
+        }
 
-    private String custCity;
+        public void setCustLastName(String custLastName) {
+            CustLastName = custLastName;
+        }
 
-    private String custCountry;
+        public String getCustAddress() {
+            return CustAddress;
+        }
 
-    private String custEmail;
+        public void setCustAddress(String custAddress) {
+            CustAddress = custAddress;
+        }
 
-    private String custFirstName;
+        public String getCustCity() {
+            return CustCity;
+        }
 
-    private String custHomePhone;
+        public void setCustCity(String custCity) {
+            CustCity = custCity;
+        }
 
-    private String custLastName;
+        public String getCustProv() {
+            return CustProv;
+        }
 
-    private String custPostal;
+        public void setCustProv(String custProv) {
+            CustProv = custProv;
+        }
 
-    private String custProv;
+        public String getCustPostal() {
+            return CustPostal;
+        }
 
-    public Customer() {
-    }
+        public void setCustPostal(String custPostal) {
+            CustPostal = custPostal;
+        }
 
-    public int getCustomerId() {
-        return this.customerId;
-    }
+        public String getCustCountry() {
+            return CustCountry;
+        }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
+        public void setCustCountry(String custCountry) {
+            CustCountry = custCountry;
+        }
 
-    public Integer getAgentId() {
-        return this.agentId;
-    }
+        public String getCustHomePhone() {
+            return CustHomePhone;
+        }
 
-    public void setAgentId(Integer agentId) {
-        this.agentId = agentId;
-    }
+        public void setCustHomePhone(String custHomePhone) {
+            CustHomePhone = custHomePhone;
+        }
 
-    public String getCustAddress() {
-        return this.custAddress;
-    }
+        public String getCustBusPhone() {
+            return CustBusPhone;
+        }
 
-    public void setCustAddress(String custAddress) {
-        this.custAddress = custAddress;
-    }
+        public void setCustBusPhone(String custBusPhone) {
+            CustBusPhone = custBusPhone;
+        }
 
-    public String getCustBusPhone() {
-        return this.custBusPhone;
-    }
+        public String getCustEmail() {
+            return CustEmail;
+        }
 
-    public void setCustBusPhone(String custBusPhone) {
-        this.custBusPhone = custBusPhone;
-    }
+        public void setCustEmail(String custEmail) {
+            CustEmail = custEmail;
+        }
 
-    public String getCustCity() {
-        return this.custCity;
-    }
+        public Integer getAgentId() {
+            return AgentId;
+        }
 
-    public void setCustCity(String custCity) {
-        this.custCity = custCity;
-    }
+        public void setAgentId(Integer agentId) {
+            AgentId = agentId;
+        }
 
-    public String getCustCountry() {
-        return this.custCountry;
-    }
+        public String getCustusername() {
+            return Custusername;
+        }
 
-    public void setCustCountry(String custCountry) {
-        this.custCountry = custCountry;
-    }
+        public void setCustusername(String custusername) {
+            Custusername = custusername;
+        }
 
-    public String getCustEmail() {
-        return this.custEmail;
-    }
+        public String getCustpassword() {
+            return Custpassword;
+        }
 
-    public void setCustEmail(String custEmail) {
-        this.custEmail = custEmail;
-    }
+        public void setCustpassword(String custpassword) {
+            Custpassword = custpassword;
+        }
+        //constructor
+        public Customer(int customerId, String custFirstName, String custLastName, String custAddress,
+                        String custCity, String custProv, String custPostal, String custCountry,
+                        String custHomePhone, String custBusPhone, String custEmail, Integer agentId,
+                        String custusername, String custpassword) {
+            CustomerId = customerId;
+            CustFirstName = custFirstName;
+            CustLastName = custLastName;
+            CustAddress = custAddress;
+            CustCity = custCity;
+            CustProv = custProv;
+            CustPostal = custPostal;
+            CustCountry = custCountry;
+            CustHomePhone = custHomePhone;
+            CustBusPhone = custBusPhone;
+            CustEmail = custEmail;
+            AgentId = agentId;
+            Custusername = custusername;
+            Custpassword = custpassword;
+        }
 
-    public String getCustFirstName() {
-        return this.custFirstName;
-    }
+        //copy a customer method
+        public void copy(Customer customer)
+        {
+            CustomerId = customer.CustomerId;
+            CustFirstName=customer.CustFirstName;
+            CustLastName = customer.CustLastName;
+            CustAddress = customer.CustAddress;
+            CustCity = customer.CustCity;
+            CustProv = customer.CustProv;
+            CustPostal = customer.CustPostal;
+            CustCountry = customer.CustCountry;
+            CustHomePhone = customer.CustHomePhone;
+            CustBusPhone = customer.CustBusPhone;
+            CustEmail = customer.CustEmail;
+            AgentId = customer.AgentId;
+            Custusername = customer.Custusername;
+            Custpassword = customer.Custpassword;
+        }
+        //tostring method
 
-    public void setCustFirstName(String custFirstName) {
-        this.custFirstName = custFirstName;
-    }
-
-    public String getCustHomePhone() {
-        return this.custHomePhone;
-    }
-
-    public void setCustHomePhone(String custHomePhone) {
-        this.custHomePhone = custHomePhone;
-    }
-
-    public String getCustLastName() {
-        return this.custLastName;
-    }
-
-    public void setCustLastName(String custLastName) {
-        this.custLastName = custLastName;
-    }
-
-    public String getCustPostal() {
-        return this.custPostal;
-    }
-
-    public void setCustPostal(String custPostal) {
-        this.custPostal = custPostal;
-    }
-
-    public String getCustProv() {
-        return this.custProv;
-    }
-
-    public void setCustProv(String custProv) {
-        this.custProv = custProv;
-    }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "customerId=" + customerId +
-                ", agentId=" + agentId +
-                ", custAddress='" + custAddress + '\'' +
-                ", custBusPhone='" + custBusPhone + '\'' +
-                ", custCity='" + custCity + '\'' +
-                ", custCountry='" + custCountry + '\'' +
-                ", custEmail='" + custEmail + '\'' +
-                ", custFirstName='" + custFirstName + '\'' +
-                ", custHomePhone='" + custHomePhone + '\'' +
-                ", custLastName='" + custLastName + '\'' +
-                ", custPostal='" + custPostal + '\'' +
-                ", custProv='" + custProv + '\'' +
+                "CustomerId=" + CustomerId +
+                ", CustFirstName='" + CustFirstName + '\'' +
+                ", CustLastName='" + CustLastName + '\'' +
+                ", CustAddress='" + CustAddress + '\'' +
+                ", CustCity='" + CustCity + '\'' +
+                ", CustProv='" + CustProv + '\'' +
+                ", CustPostal='" + CustPostal + '\'' +
+                ", CustCountry='" + CustCountry + '\'' +
+                ", CustHomePhone='" + CustHomePhone + '\'' +
+                ", CustBusPhone='" + CustBusPhone + '\'' +
+                ", CustEmail='" + CustEmail + '\'' +
+                ", AgentId=" + AgentId +
+                ", Custusername='" + Custusername + '\'' +
+                ", Custpassword='" + Custpassword + '\'' +
                 '}';
     }
 }
+

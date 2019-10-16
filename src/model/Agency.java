@@ -1,104 +1,129 @@
-package model;
-
-import java.io.Serializable;
-
-
 /**
- * The persistent class for the agencies database table.
- *
+ * Entity class to hold data for 1 row in travelexperts.agencies table
+ * Course: CMPP-264 - Java
+ * Assignment: Workshop 6
+ * Author: Salah Hadj Cherif
+ * Date: Oct 12 2019
  */
 
-public class Agency implements Serializable {
-    private static final long serialVersionUID = 1L;
 
-    private int agencyId;
+package model;
 
-    private String agncyAddress;
+public class Agency {
+    private int AgencyId;
+    private String AgncyAddress;
+    private String AgncyCity;
+    private String AgncyProv;
+    private String AgncyPostal;
+    private String AgncyCountry;
+    private String AgncyPhone;
+    private String AgncyFax;
 
-    private String agncyCity;
-
-    private String agncyCountry;
-
-    private String agncyFax;
-
-    private String agncyPhone;
-
-    private String agncyPostal;
-
-    private String agncyProv;
-
-    public Agency() {
+    public Agency(int agencyId, String agncyAddress, String agncyCity, String agncyProv,
+                  String agncyPostal, String agncyCountry, String agncyPhone, String agncyFax) {
+        AgencyId = agencyId;
+        AgncyAddress = agncyAddress;
+        AgncyCity = agncyCity;
+        AgncyProv = agncyProv;
+        AgncyPostal = agncyPostal;
+        AgncyCountry = agncyCountry;
+        AgncyPhone = agncyPhone;
+        AgncyFax = agncyFax;
     }
 
     public int getAgencyId() {
-        return this.agencyId;
+        return AgencyId;
     }
 
     public void setAgencyId(int agencyId) {
-        this.agencyId = agencyId;
+        AgencyId = agencyId;
     }
 
     public String getAgncyAddress() {
-        return this.agncyAddress;
+        return AgncyAddress;
     }
 
     public void setAgncyAddress(String agncyAddress) {
-        this.agncyAddress = agncyAddress;
+        AgncyAddress = agncyAddress;
     }
 
     public String getAgncyCity() {
-        return this.agncyCity;
+        return AgncyCity;
     }
 
     public void setAgncyCity(String agncyCity) {
-        this.agncyCity = agncyCity;
-    }
-
-    public String getAgncyCountry() {
-        return this.agncyCountry;
-    }
-
-    public void setAgncyCountry(String agncyCountry) {
-        this.agncyCountry = agncyCountry;
-    }
-
-    public String getAgncyFax() {
-        return this.agncyFax;
-    }
-
-    public void setAgncyFax(String agncyFax) {
-        this.agncyFax = agncyFax;
-    }
-
-    public String getAgncyPhone() {
-        return this.agncyPhone;
-    }
-
-    public void setAgncyPhone(String agncyPhone) {
-        this.agncyPhone = agncyPhone;
-    }
-
-    public String getAgncyPostal() {
-        return this.agncyPostal;
-    }
-
-    public void setAgncyPostal(String agncyPostal) {
-        this.agncyPostal = agncyPostal;
+        AgncyCity = agncyCity;
     }
 
     public String getAgncyProv() {
-        return this.agncyProv;
+        return AgncyProv;
     }
 
     public void setAgncyProv(String agncyProv) {
-        this.agncyProv = agncyProv;
+        AgncyProv = agncyProv;
     }
+
+    public String getAgncyPostal() {
+        return AgncyPostal;
+    }
+
+    public void setAgncyPostal(String agncyPostal) {
+        AgncyPostal = agncyPostal;
+    }
+
+    public String getAgncyCountry() {
+        return AgncyCountry;
+    }
+
+    public void setAgncyCountry(String agncyCountry) {
+        AgncyCountry = agncyCountry;
+    }
+
+    public String getAgncyPhone() {
+        return AgncyPhone;
+    }
+
+    public void setAgncyPhone(String agncyPhone) {
+        AgncyPhone = agncyPhone;
+    }
+
+    public String getAgncyFax() {
+        return AgncyFax;
+    }
+
+    public void setAgncyFax(String agncyFax) {
+        AgncyFax = agncyFax;
+    }
+
 
     @Override
     public String toString() {
-        return "Agency [agencyId=" + agencyId + ", agncyAddress=" + agncyAddress + ", agncyCity=" + agncyCity
-                + ", agncyCountry=" + agncyCountry + ", agncyFax=" + agncyFax + ", agncyPhone=" + agncyPhone
-                + ", agncyPostal=" + agncyPostal + ", agncyProv=" + agncyProv + "]";
+        return "Agency{" +
+                "AgencyId=" + AgencyId +
+                ", AgncyAddress='" + AgncyAddress + '\'' +
+                ", AgncyCity='" + AgncyCity + '\'' +
+                ", AgncyProv='" + AgncyProv + '\'' +
+                ", AgncyPostal='" + AgncyPostal + '\'' +
+                ", AgncyCountry='" + AgncyCountry + '\'' +
+                ", AgncyPhone='" + AgncyPhone + '\'' +
+                ", AgncyFax='" + AgncyFax + '\'' +
+                '}';
     }
+    //copy an agency method
+    public void copy(Agency agency)
+    {
+
+        AgencyId = agency.AgencyId;
+        AgncyAddress = agency.AgncyAddress;
+        AgncyCity = agency.AgncyCity;
+        AgncyProv = agency.AgncyProv;
+        AgncyPostal = agency.AgncyPostal;
+        AgncyCountry = agency.AgncyCountry;
+        AgncyPhone =agency.AgncyPhone;
+        AgncyFax = agency.AgncyFax;
+
+
+    }
+
 
 }

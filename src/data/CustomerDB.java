@@ -53,38 +53,44 @@ public class CustomerDB {
      * @param customer to insert
      * @return message of success/failure
      */
-//    public String insertCustomer(Customer customer) {
-//
-//        // AgentId must be 0 for an INSERT to be successful
-//        customer.setCustomerId(0);
-//
-//        gson = new Gson();
-//        String jsonData = gson.toJson(customer, Customer.class);
-//        String response = this.customerData.insertCustomer(jsonData);
-//        return response;
-//    }
-//
-//    /**
-//     * UPDATE a Customer in the database
-//     * @param customer to update
-//     * @return message of success/failure
-//     */
-//    public String updateAgent(Customer customer) {
-//
-//        gson = new Gson();
-//        String jsonData = gson.toJson(customer, Customer.class);
-//        String response = this.customerData.updateCustomer(jsonData);
-//        return response;
-//    }
-//
-//    /**
-//     * DELETE an Customer in the database
-//     * @param customerId of Customer to delete
-//     * @return message of success/failure
-//     */
-//    public String deleteCustomer(int customerId) {
-//
-//        return this.customerData.deleteCustomer(customerId);
-//    }
+    public String insertCustomer(Customer customer) {
+
+        // AgentId must be 0 for an INSERT to be successful
+        customer.setCustomerId(0);
+
+        gson = new Gson();
+        String jsonData = gson.toJson(customer, Customer.class);
+        String response = this.customerData.insertCustomer(jsonData);
+        return response;
+    }
+
+    /**
+     * UPDATE a Customer in the database
+     * @param oldCustomer to check for optimistic concurrency
+     * @param newCustomer to update
+     * @return message of success/failure
+     */
+    public String updateAgent(Customer oldCustomer, Customer newCustomer) {
+
+        gson = new Gson();
+        ArrayList<Customer> list = new ArrayList<>();
+        list.add(oldCustomer);
+        list.add(newCustomer);
+        Type type = new TypeToken<List<Customer>>() {}.getType();
+
+        String jsonData = gson.toJson(list, type);
+        String response = this.customerData.updateCustomer(jsonData);
+        return response;
+    }
+
+    /**
+     * DELETE an Customer in the database
+     * @param customerId of Customer to delete
+     * @return message of success/failure
+     */
+    public String deleteCustomer(int customerId) {
+
+        return this.customerData.deleteCustomer(customerId);
+    }
 
 }

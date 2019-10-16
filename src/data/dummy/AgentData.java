@@ -1,7 +1,5 @@
 package data.dummy;
 
-import model.Agent;
-
 public class AgentData implements data.AgentData {
 
     @Override

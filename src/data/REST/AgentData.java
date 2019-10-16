@@ -1,7 +1,5 @@
 package data.REST;
 
-
-import model.Agent;
 import rest.API;
 
 public class AgentData implements data.AgentData {
@@ -24,14 +22,14 @@ public class AgentData implements data.AgentData {
     public String insertAgent(String jsonData) {
 
         // Send data to the API and return message
-        return API.putJson(Constants.URL + "/agent/putagent", jsonData);
+        return API.putJson(Constants.URL + "/agent/insertagent", jsonData);
     }
 
     @Override
     public String updateAgent(String jsonData) {
 
         // Send data to the API and return message
-        return API.postJson(Constants.URL + "/agent/postagent", jsonData);
+        return API.postJson(Constants.URL + "/agent/updateagent", jsonData);
     }
 
     @Override
@@ -40,6 +38,4 @@ public class AgentData implements data.AgentData {
         // Send data to the API and return message
         return API.deleteJson(Constants.URL + "/agent/deleteagent/" + agentId);
     }
-
-
 }

@@ -64,15 +64,22 @@ public class AgentDB {
         return response;
     }
 
+
     /**
      * UPDATE an Agent in the database
-     * @param agent to update
+     * @param oldAgent to check for optimistic concurrency
+     * @param newAgent to update
      * @return message of success/failure
      */
-    public String updateAgent(Agent agent) {
+    public String updateAgent(Agent oldAgent, Agent newAgent) {
 
         gson = new Gson();
-        String jsonData = gson.toJson(agent, Agent.class);
+        ArrayList<Agent> list = new ArrayList<>();
+        list.add(oldAgent);
+        list.add(newAgent);
+        Type type = new TypeToken<List<Agent>>() {}.getType();
+
+        String jsonData = gson.toJson(list, type);
         String response = this.agentData.updateAgent(jsonData);
         return response;
     }

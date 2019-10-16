@@ -2,7 +2,6 @@ package main;
 
 import data.AgencyDB;
 import data.AgentDB;
-import data.AgentData;
 import data.CustomerDB;
 import model.Agent;
 
@@ -20,7 +19,7 @@ public class Runner {
     private static Tables table = Tables.CUSTOMER;
 
     // Change the datasource from DummyData to REST API
-    private static DataSources src = DataSources.DUMMY;
+    private static DataSources src = DataSources.REST;
 
     // Change the request that you're passing to the server
     private static Requests rqst = Requests.GETALL;
@@ -33,11 +32,9 @@ public class Runner {
             case AGENT:
                 testAgentTable();
                 break;
-
             case AGENCY:
                 testAgencyTable();
                 break;
-
             case CUSTOMER:
                 testCustomerTable();
                 break;
@@ -52,14 +49,12 @@ public class Runner {
             case DUMMY:
                 db = new AgentDB(new data.dummy.AgentData());
                 break;
-
             case REST:
                 db = new AgentDB(new data.REST.AgentData());
                 break;
         }
 
         if (db != null) {
-
             System.out.println("-----------------" + src.toString() + "-----------------");
             System.out.println("-----------------" + rqst.toString() + "-----------------");
 
@@ -68,22 +63,18 @@ public class Runner {
                 case GET:
                     System.out.println(db.getAgent(1));
                     break;
-
                 case GETALL:
                     System.out.println(db.getAgentList());
                     break;
-
                 case INSERT:
                     System.out.println(db.insertAgent(db.getAgent(1)));
                     break;
-
                 case UPDATE:
-                    Agent agent = db.getAgent(2);
-                    agent.setAgtFirstName("James");
-
-                    System.out.println(db.updateAgent(agent));
+                    Agent oldAgent = db.getAgent(2);
+                    Agent newAgent = db.getAgent(2);
+                    newAgent.setAgtFirstName("James");
+                    System.out.println(db.updateAgent(oldAgent, newAgent));
                     break;
-
                 case DELETE:
                     System.out.println(db.deleteAgent(2));
                     break;
@@ -98,7 +89,6 @@ public class Runner {
             case DUMMY:
                 db = new AgencyDB(new data.dummy.AgencyData());
                 break;
-
             case REST:
                 db = new AgencyDB(new data.REST.AgencyData());
                 break;
@@ -114,10 +104,9 @@ public class Runner {
                 case GET:
                     System.out.println(db.getAgency(1));
                     break;
-
-//                case GETALL:
-//                    System.out.println(db.getAgencyList());
-//                    break;
+                case GETALL:
+                    System.out.println(db.getAgencyList());
+                    break;
 //
 //                case INSERT:
 //                    System.out.println(db.insertAgency(db.getAgency(1)));
