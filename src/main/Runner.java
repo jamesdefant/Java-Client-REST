@@ -2,13 +2,16 @@ package main;
 
 import data.*;
 import model.Agent;
+import model.Package_Product_Supplier;
 
 enum Tables {
     AGENT,
     AGENCY,
     BOOKING,
     CUSTOMER,
-    CUSTOMER_REWARDS
+    CUSTOMER_REWARDS,
+    PACKAGE_PRODUCT_SUPPLIER,
+    TRIPTYPES
 }
 /**
  * Testing class
@@ -16,7 +19,7 @@ enum Tables {
 public class Runner {
 
     // Change the table to test
-    private static Tables table = Tables.CUSTOMER_REWARDS;
+    private static Tables table = Tables.TRIPTYPES;
 
     // Change the datasource from DummyData to REST API
     private static DataSources src = DataSources.REST;
@@ -43,7 +46,14 @@ public class Runner {
                 break;
             case CUSTOMER_REWARDS:
                 testCustomer_rewardsTable();
-                break;        }
+                break;
+            case PACKAGE_PRODUCT_SUPPLIER:
+                testPackageProductSupplierTable();
+                break;
+            case TRIPTYPES:
+                testTripTypeTable();
+                break;
+        }
     }
 
     private static void testAgentTable() {
@@ -264,4 +274,97 @@ public class Runner {
             }
         }
     }
+    private static void testPackageProductSupplierTable() {
+
+        Package_Product_SupplierDB db = null;
+
+        switch(src) {
+            case DUMMY:
+                db = new Package_Product_SupplierDB(new data.dummy.Package_Product_SupplierData());
+                break;
+            case REST:
+                db = new Package_Product_SupplierDB(new data.REST.Package_Product_SupplierData());
+                break;
+        }
+
+        if (db != null) {
+
+            System.out.println("-----------------" + src.toString() + "-----------------");
+            System.out.println("-----------------" + rqst.toString() + "-----------------");
+
+            switch (rqst) {
+
+                case GET:
+//                    System.out.println(db.getCustomer_rewards(1));
+                    break;
+                case GETALL:
+                    System.out.println(db.getPackage_Product_SupplierList());
+                    break;
+
+                case INSERT:
+                    Package_Product_Supplier pps = new Package_Product_Supplier(4, 31);
+
+                    System.out.println(db.insertPackage_Product_Supplier(pps));
+                    break;
+
+                case UPDATE:
+//                    Agent agent = db.getAgency(2);
+//                    agent.setAgtFirstName("James");
+//
+//                    System.out.println(db.updatePackage_Product_Supplier(agent));
+                    break;
+
+                case DELETE:
+                    System.out.println(db.deletePackage_Product_Supplier(4, 31));
+                    break;
+            }
+        }
+    }
+    private static void testTripTypeTable() {
+
+        TripTypeDB db = null;
+
+        switch(src) {
+            case DUMMY:
+                db = new TripTypeDB(new data.dummy.TripTypeData());
+                break;
+            case REST:
+                db = new TripTypeDB(new data.REST.TripTypeData());
+                break;
+        }
+
+        if (db != null) {
+
+            System.out.println("-----------------" + src.toString() + "-----------------");
+            System.out.println("-----------------" + rqst.toString() + "-----------------");
+
+            switch (rqst) {
+
+                case GET:
+                    System.out.println(db.getTripType("B"));
+                    break;
+                case GETALL:
+                    System.out.println(db.getTripTypeList());
+                    break;
+
+//                case INSERT:
+//                    Package_Product_Supplier pps = new Package_Product_Supplier(4, 31);
+//
+//                    System.out.println(db.insertPackage_Product_Supplier(pps));
+//                    break;
+//
+//                case UPDATE:
+////                    Agent agent = db.getAgency(2);
+////                    agent.setAgtFirstName("James");
+////
+////                    System.out.println(db.updatePackage_Product_Supplier(agent));
+//                    break;
+//
+//                case DELETE:
+//                    System.out.println(db.deletePackage_Product_Supplier(4, 31));
+//                    break;
+            }
+        }
+    }
+
 }

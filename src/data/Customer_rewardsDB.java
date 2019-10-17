@@ -2,7 +2,6 @@ package data;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import model.Booking;
 import model.Customer_rewards;
 
 import java.lang.reflect.Type;

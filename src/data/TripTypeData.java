@@ -2,7 +2,7 @@ package data;
 
 public interface TripTypeData {
 
-    String getTripType(int Id);
+    String getTripType(String Id);
     String getTripTypes();
 //    String insertTripType(String jsonData);
 //    String updateTripType(String jsonData);
