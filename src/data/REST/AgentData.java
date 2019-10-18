@@ -15,7 +15,7 @@ public class AgentData implements data.AgentData {
     public String getAllAgents() {
 
         // Call the API
-        return API.getJson(Constants.URL + "/agent/getallagents/");
+        return API.getJson(Constants.URL + "/agent/getallagents");
     }
 
     @Override

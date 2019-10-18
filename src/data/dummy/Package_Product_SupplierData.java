@@ -4,18 +4,18 @@ public class Package_Product_SupplierData implements data.Package_Product_Suppli
     @Override
     public String getAllPackage_Product_Suppliers() {
 
-        return "[{\"packageId\":1,\"productSupplierId\":65},{\"packageId\":1,\"productSupplierId\":65},{\"packageId\":2,\"productSupplierId\":32},{\"packageId\":2,\"productSupplierId\":32},{\"packageId\":2,\"productSupplierId\":32},{\"packageId\":3,\"productSupplierId\":28},{\"packageId\":3,\"productSupplierId\":28},{\"packageId\":3,\"productSupplierId\":28},{\"packageId\":4,\"productSupplierId\":9},{\"packageId\":4,\"productSupplierId\":9},{\"packageId\":4,\"productSupplierId\":9}]";
+        return "[{\"PackageId\":1,\"ProductSupplierId\":65},{\"PackageId\":1,\"ProductSupplierId\":93},{\"PackageId\":2,\"ProductSupplierId\":32},{\"PackageId\":2,\"ProductSupplierId\":33},{\"PackageId\":2,\"ProductSupplierId\":90},{\"PackageId\":3,\"ProductSupplierId\":28},{\"PackageId\":3,\"ProductSupplierId\":82},{\"PackageId\":3,\"ProductSupplierId\":87},{\"PackageId\":4,\"ProductSupplierId\":9},{\"PackageId\":4,\"ProductSupplierId\":65},{\"PackageId\":4,\"ProductSupplierId\":84}]";
     }
 
     @Override
     public String insertPackage_Product_Supplier(String jsonData) {
 
-        return "{\"packageId\":1,\"productSupplierId\":65}";
+        return "INSERT on \n" + jsonData + "\n...attemtped.\nMethod not yet implemented";
     }
 
     @Override
     public String updatePackage_Product_Supplier(String jsonData) {
-        return "INSERT on \n" + jsonData + "\n...attemtped.\nMethod not yet implemented";
+        return "UPDATE on \n" + jsonData + "\n...attemtped.\nMethod not yet implemented";
     }
 
     @Override

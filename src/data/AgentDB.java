@@ -11,12 +11,12 @@ import java.util.List;
 public class AgentDB {
 
     private Gson gson;
-    private AgentData agentData;
+    private AgentData data;
 
     // Constructor
-    public AgentDB(AgentData agentData) {
+    public AgentDB(AgentData data) {
 
-        this.agentData = agentData;
+        this.data = data;
     }
 
     /**
@@ -27,7 +27,7 @@ public class AgentDB {
     public Agent getAgent(int agentId) {
 
         gson = new Gson();
-        String jsonData = this.agentData.getAgent(agentId);
+        String jsonData = this.data.getAgent(agentId);
         System.out.println("jsonData: " + jsonData);
         return gson.fromJson(jsonData, Agent.class);
 
@@ -40,7 +40,7 @@ public class AgentDB {
     public ArrayList<Agent> getAgentList() {
 
         gson = new Gson();
-        String jsonData = this.agentData.getAllAgents();
+        String jsonData = this.data.getAllAgents();
         System.out.println("jsonData: " + jsonData);
 
         // Turn jsondata into list of objects
@@ -60,7 +60,7 @@ public class AgentDB {
 
         gson = new Gson();
         String jsonData = gson.toJson(agent, Agent.class);
-        String response = this.agentData.insertAgent(jsonData);
+        String response = this.data.insertAgent(jsonData);
         return response;
     }
 
@@ -80,7 +80,7 @@ public class AgentDB {
         Type type = new TypeToken<List<Agent>>() {}.getType();
 
         String jsonData = gson.toJson(list, type);
-        String response = this.agentData.updateAgent(jsonData);
+        String response = this.data.updateAgent(jsonData);
         return response;
     }
 
@@ -91,6 +91,6 @@ public class AgentDB {
      */
     public String deleteAgent(int agentId) {
 
-        return this.agentData.deleteAgent(agentId);
+        return this.data.deleteAgent(agentId);
     }
 }
