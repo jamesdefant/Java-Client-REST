@@ -22,10 +22,10 @@ enum Tables {
 public class Runner {
 
     // Change the table to test
-    private static Tables table = Tables.CUSTOMER_REWARDS;
+    private static Tables table = Tables.AGENT;
 
     // Change the datasource from DummyData to REST API
-    private static DataSources src = DataSources.REST;
+    private static DataSources src = DataSources.DUMMY;
 
     // Change the request that you're passing to the server
     private static Requests rqst = Requests.GETALL;
