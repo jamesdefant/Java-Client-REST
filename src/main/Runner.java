@@ -25,7 +25,7 @@ public class Runner {
     private static Tables table = Tables.CUSTOMER_REWARDS;
 
     // Change the datasource from DummyData to REST API
-    private static DataSources src = DataSources.DUMMY;
+    private static DataSources src = DataSources.REST;
 
     // Change the request that you're passing to the server
     private static Requests rqst = Requests.GETALL;
@@ -219,27 +219,28 @@ public class Runner {
             switch (rqst) {
 
                 case GET:
-                    System.out.println(db.getCustomer(1));
+                    System.out.println(db.getCustomer(104));
                     break;
 
                 case GETALL:
                     System.out.println(db.getCustomerList());
                     break;
 
-//                case INSERT:
-//                    System.out.println(db.insertAgency(db.getAgency(1)));
-//                    break;
-//
-//                case UPDATE:
-//                    Agent agent = db.getAgency(2);
-//                    agent.setAgtFirstName("James");
-//
-//                    System.out.println(db.updateAgency(agent));
-//                    break;
-//
-//                case DELETE:
-//                    System.out.println(db.deleteAgency(2));
-//                    break;
+                case INSERT:
+                    System.out.println(db.insertCustomer(db.getCustomer(104)));
+                    break;
+
+                case UPDATE:
+                    Customer oldCust = db.getCustomer(104);
+                    Customer newCust = db.getCustomer(104);
+                    newCust.setCustFirstName("James");
+
+                    System.out.println(db.updateAgent(oldCust, newCust));
+                    break;
+
+                case DELETE:
+                    System.out.println(db.deleteCustomer(177));
+                    break;
             }
         }
     }
