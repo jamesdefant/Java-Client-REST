@@ -13,6 +13,7 @@ enum Tables {
     PACKAGE_PRODUCT_SUPPLIER,
     PRODUCT,
     PRODUCT_SUPPLIER,
+    REWARD,
     SUPPLIER,
     TRIPTYPES
 }
@@ -22,13 +23,13 @@ enum Tables {
 public class Runner {
 
     // Change the table to test
-    private static Tables table = Tables.AGENT;
+    private static Tables table = Tables.PACKAGE;
 
     // Change the datasource from DummyData to REST API
     private static DataSources src = DataSources.DUMMY;
 
     // Change the request that you're passing to the server
-    private static Requests rqst = Requests.GETALL;
+    private static Requests rqst = Requests.UPDATE;
 
     public static void main(String[] args) {
 
@@ -59,6 +60,9 @@ public class Runner {
                 break;
             case PRODUCT_SUPPLIER:
                 testProductSupplierTable();
+                break;
+            case REWARD:
+                testRewardsTable();
                 break;
             case SUPPLIER:
                 testSupplierTable();
@@ -309,27 +313,29 @@ public class Runner {
             switch (rqst) {
 
                 case GET:
-//                    System.out.println(db.getCustomer_rewards(1));
+                    System.out.println(db.getPackage(1));
                     break;
                 case GETALL:
                     System.out.println(db.getPackageList());
                     break;
 
                 case INSERT:
-//                    Package_Product_Supplier pps = new Package_Product_Supplier(4, 31);
-//
-//                    System.out.println(db.insertPackage_Product_Supplier(pps));
+                    model.Package pkg = db.getPackage(1);
+                    System.out.println(pkg);
+
+                    System.out.println(db.insertPackage(pkg));
                     break;
 
                 case UPDATE:
-//                    Package agent = db.getAgency(2);
-//                    agent.setAgtFirstName("James");
-//
-//                    System.out.println(db.updatePackage());
+                    model.Package oldPkg = db.getPackage(1);
+                    model.Package newPkg = db.getPackage(1);
+                    newPkg.setPkgName("Hallowween terrror!!!!");
+
+                    System.out.println(db.updatePackage(oldPkg, newPkg));
                     break;
 
                 case DELETE:
-//                    System.out.println(db.deletePackage_Product_Supplier(4, 31));
+                    System.out.println(db.deletePackage(4));
                     break;
             }
         }
@@ -414,8 +420,8 @@ public class Runner {
                     break;
 
                 case UPDATE:
-                    Product oldProd = db.getProduct(1);
-                    Product newProd = db.getProduct(1);
+                    Product oldProd = db.getProduct(16);
+                    Product newProd = db.getProduct(16);
                     newProd.setProdName("Airier");
 
                     System.out.println(db.updateProduct(oldProd, newProd));
@@ -471,6 +477,53 @@ public class Runner {
                 case DELETE:
                     System.out.println(db.deleteProductSupplier(94));
                     break;
+            }
+        }
+    }
+    private static void testRewardsTable() {
+
+        RewardDB db = null;
+
+        switch(src) {
+            case DUMMY:
+                db = new RewardDB(new data.dummy.RewardData());
+                break;
+            case REST:
+                db = new RewardDB(new data.REST.RewardData());
+                break;
+        }
+
+        if (db != null) {
+
+            System.out.println("-----------------" + src.toString() + "-----------------");
+            System.out.println("-----------------" + rqst.toString() + "-----------------");
+
+            switch (rqst) {
+
+                case GET:
+                    System.out.println(db.getReward(1));
+                    break;
+                case GETALL:
+                    System.out.println(db.getRewardList());
+                    break;
+
+//                case INSERT:
+//                    Supplier sup = new Supplier(1, "BRAND SPANKIN NEW");
+//
+//                    System.out.println(db.insertSupplier(sup));
+//                    break;
+//
+//                case UPDATE:
+//                    Supplier oldSup = db.getSupplier(69);
+//                    Supplier newSup = db.getSupplier(69);
+//                    newSup.setSupName("NEW NEW NEW CONCEPT");
+//
+//                    System.out.println(db.updateSupplier(oldSup, newSup));
+//                    break;
+//
+//                case DELETE:
+//                    System.out.println(db.deleteSupplier(13597));
+//                    break;
             }
         }
     }
