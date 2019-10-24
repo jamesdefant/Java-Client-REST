@@ -23,13 +23,13 @@ enum Tables {
 public class Runner {
 
     // Change the table to test
-    private static Tables table = Tables.PACKAGE;
+    private static Tables table = Tables.AGENCY;
 
     // Change the datasource from DummyData to REST API
-    private static DataSources src = DataSources.DUMMY;
+    private static DataSources src = DataSources.REST;
 
     // Change the request that you're passing to the server
-    private static Requests rqst = Requests.UPDATE;
+    private static Requests rqst = Requests.GETALL;
 
     public static void main(String[] args) {
 
