@@ -29,7 +29,7 @@ public class Runner {
     private static DataSources src = DataSources.REST;
 
     // Change the request that you're passing to the server
-    private static Requests rqst = Requests.UPDATE;
+    private static Requests rqst = Requests.GETALL;
 
     public static void main(String[] args) {
 
