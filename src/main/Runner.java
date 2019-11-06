@@ -3,6 +3,7 @@ package main;
 import data.*;
 import model.*;
 
+
 enum Tables {
     AGENT,
     AGENCY,
@@ -23,13 +24,13 @@ enum Tables {
 public class Runner {
 
     // Change the table to test
-    private static Tables table = Tables.AGENCY;
+    private static Tables table = Tables.AGENT;
 
     // Change the datasource from DummyData to REST API
     private static DataSources src = DataSources.REST;
 
     // Change the request that you're passing to the server
-    private static Requests rqst = Requests.GETALL;
+    private static Requests rqst = Requests.INSERT;
 
     public static void main(String[] args) {
 
@@ -235,15 +236,15 @@ public class Runner {
                     break;
 
                 case UPDATE:
-                    Customer oldCust = db.getCustomer(104);
-                    Customer newCust = db.getCustomer(104);
-                    newCust.setCustFirstName("James");
+                    Customer oldCust = db.getCustomer(135);
+                    Customer newCust = db.getCustomer(135);
+                    newCust.setCustFirstName("Michelle");
 
                     System.out.println(db.updateAgent(oldCust, newCust));
                     break;
 
                 case DELETE:
-                    System.out.println(db.deleteCustomer(177));
+                    System.out.println(db.deleteCustomer(144));
                     break;
             }
         }
