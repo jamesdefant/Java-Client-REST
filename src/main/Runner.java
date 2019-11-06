@@ -24,7 +24,8 @@ enum Tables {
 public class Runner {
 
     // Change the table to test
-    private static Tables table = Tables.AGENT;
+    private static Tables table = Tables.SUPPLIER;
+
 
     // Change the datasource from DummyData to REST API
     private static DataSources src = DataSources.REST;
@@ -423,7 +424,7 @@ public class Runner {
                 case UPDATE:
                     Product oldProd = db.getProduct(16);
                     Product newProd = db.getProduct(16);
-                    newProd.setProdName("Airier");
+                    newProd.setProdName("Airiest");
 
                     System.out.println(db.updateProduct(oldProd, newProd));
                     break;
